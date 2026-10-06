@@ -1,0 +1,576 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Schlüsselzahlen / Key Figures</title>
+<meta name="description" content="Sechs Schätzfragen zur Wohnungslosigkeit in Hamburg. Six guesses about homelessness in Hamburg.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Schlüsselzahlen / Key Figures">
+<meta property="og:description" content="1 von 57 Menschen in Hamburg hat keine eigene Wohnung. Wie gut schätzt du? / 1 in 57 people in Hamburg have no flat of their own. How well can you guess?">
+<meta property="og:url" content="https://sudhara-jayalath.github.io/schluesselzahlen/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;800&family=IBM+Plex+Mono:wght@400;500&family=Public+Sans:wght@400;600;700&display=swap">
+<style>
+*,*::before,*::after{box-sizing:border-box}
+html{color-scheme:light}
+body{margin:0;-webkit-text-size-adjust:100%}
+img{max-width:100%}
+[hidden]{display:none!important}
+/* Layout: one narrow column, one question at a time, like a form handed across a counter. Guess = brass (key metal), reality = brick. */
+:root{
+  --paper:#E4EAEC; --card:#F4F7F8; --ink:#13222C; --muted:#56666F; --line:#C2CDD2;
+  --brass:#B57A0C; --brick:#B0432A; --d1:#8FA5B1; --d2:#6A8391; --d3:#46606E;
+  --f-display:"Big Shoulders Display","Arial Narrow",Impact,sans-serif;
+  --f-body:"Public Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --paper:#0E181E; --card:#15222A; --ink:#E3EBEE; --muted:#93A4AD; --line:#2A3A44;
+  --brass:#E6AE3E; --brick:#E2724F; --d1:#3A5361; --d2:#567282; --d3:#7D98A6; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --paper:#0E181E; --card:#15222A; --ink:#E3EBEE; --muted:#93A4AD; --line:#2A3A44;
+  --brass:#E6AE3E; --brick:#E2724F; --d1:#3A5361; --d2:#567282; --d3:#7D98A6; color-scheme:dark}
+
+body{background:var(--paper);color:var(--ink);font-family:var(--f-body);font-size:1rem;line-height:1.55}
+.wrap{max-width:46rem;margin:0 auto;padding-inline:1.25rem;padding-block:1.25rem 3rem;display:flex;flex-direction:column;gap:2rem}
+.mast{display:flex;justify-content:space-between;align-items:center;gap:.75rem 1rem;flex-wrap:wrap;border-bottom:1px solid var(--line);padding-bottom:.9rem}
+.brand{font-family:var(--f-display);font-weight:800;font-size:1.35rem;letter-spacing:.04em;text-transform:uppercase}
+.mast-r{display:flex;align-items:center;gap:1rem;flex-wrap:wrap}
+.pips{display:flex;gap:.35rem}
+.pip{width:1.6rem;height:.55rem;border-radius:.3rem .1rem .1rem .3rem;background:var(--line)}
+.pip.done{background:var(--brass)}
+.pip.now{background:var(--ink)}
+.lang{display:flex;border-radius:.35rem;box-shadow:inset 0 0 0 1.5px var(--ink);overflow:hidden}
+.lang button{font-family:var(--f-mono);font-size:.75rem;font-weight:500;letter-spacing:.06em;background:transparent;color:var(--ink);border:0;padding:.3rem .6rem;cursor:pointer}
+.lang button[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
+.lang button:focus-visible{outline:3px solid var(--brass);outline-offset:-3px}
+.eyebrow{font-family:var(--f-mono);font-size:.75rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);display:flex;gap:1rem;flex-wrap:wrap;margin:0}
+h1,h2{font-family:var(--f-display);font-weight:800;text-wrap:balance;margin:0;line-height:1.02}
+h1{font-size:clamp(2.8rem,9vw,4.8rem);text-transform:uppercase;letter-spacing:.01em;hyphens:auto}
+h2{font-size:clamp(1.7rem,5vw,2.4rem);font-weight:600;hyphens:auto}
+p{margin:0;max-width:65ch}
+.lede{font-size:1.15rem}
+.small{font-size:.85rem;color:var(--muted)}
+.stack{display:flex;flex-direction:column;gap:1.25rem}
+
+/* intro tag */
+.intro{display:grid;grid-template-columns:1fr auto;gap:2rem;align-items:center}
+.intro > *{min-width:0}
+@media (max-width:640px){.intro{grid-template-columns:1fr}}
+.tag{position:relative;width:15rem;max-width:100%;padding:2.6rem 1.4rem 1.4rem;background:var(--brass);color:var(--paper);border-radius:1.6rem .5rem .5rem .5rem;transform:rotate(-5deg);box-shadow:0 .6rem 1.5rem -1rem var(--ink)}
+.tag::before{content:"";position:absolute;top:.9rem;left:1rem;width:1rem;height:1rem;border-radius:50%;background:var(--paper);box-shadow:inset 0 0 0 2px var(--ink)}
+.tag b{display:block;font-family:var(--f-display);font-size:3.6rem;line-height:1;font-variant-numeric:tabular-nums}
+.tag span{font-family:var(--f-mono);font-size:.72rem;letter-spacing:.06em;text-transform:uppercase}
+
+/* buttons */
+.btn{font-family:var(--f-display);font-weight:800;font-size:1.2rem;letter-spacing:.06em;text-transform:uppercase;background:var(--ink);color:var(--paper);border:0;border-radius:.4rem;padding:.75rem 1.5rem;cursor:pointer;align-self:flex-start}
+.btn:hover{background:var(--brick)}
+.btn:disabled{opacity:.35;cursor:not-allowed;background:var(--ink)}
+.btn.ghost{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 2px var(--ink)}
+.btn.ghost:hover{background:var(--ink);color:var(--paper)}
+.btn:focus-visible,input:focus-visible,svg:focus-visible{outline:3px solid var(--brass);outline-offset:3px}
+
+/* guess dial */
+.dial{display:flex;align-items:baseline;gap:.6rem;flex-wrap:wrap;color:var(--brass)}
+.dial output{font-family:var(--f-display);font-weight:800;font-size:clamp(4rem,14vw,6rem);line-height:.9;font-variant-numeric:tabular-nums}
+.dial .unit{font-family:var(--f-mono);font-size:.95rem;color:var(--muted)}
+input[type=range]{width:100%;accent-color:var(--brass);height:2rem;cursor:pointer}
+.scale{display:flex;justify-content:space-between;font-family:var(--f-mono);font-size:.75rem;color:var(--muted);margin-top:-.75rem}
+
+/* reveal */
+.reveal{border-top:2px solid var(--ink);padding-top:1.5rem}
+.verdict{display:flex;flex-wrap:wrap;gap:.5rem 1.5rem;align-items:baseline;font-family:var(--f-mono);font-size:.85rem}
+.verdict .truth{font-family:var(--f-display);font-weight:800;font-size:3rem;color:var(--brick);line-height:1;font-variant-numeric:tabular-nums}
+.verdict .pts{background:var(--brass);color:var(--paper);padding:.15rem .5rem;border-radius:.25rem;font-weight:500}
+.panel{background:var(--card);border-radius:.6rem;padding:1.25rem;display:flex;flex-direction:column;gap:1rem}
+.key{display:flex;flex-wrap:wrap;gap:.4rem 1.2rem;font-family:var(--f-mono);font-size:.75rem;color:var(--muted)}
+.key i{display:inline-block;width:.8rem;height:.8rem;border-radius:.15rem;vertical-align:-.1rem;margin-right:.35rem}
+.key i.ring{background:transparent;box-shadow:inset 0 0 0 2px var(--brass)}
+
+/* waffle of beds */
+.waffle{display:grid;grid-template-columns:repeat(10,1fr);gap:.3rem;max-width:22rem}
+.waffle span{aspect-ratio:1.6;border-radius:.2rem .5rem .2rem .2rem;background:var(--line);max-width:100%}
+.waffle span.g{box-shadow:0 0 0 2px var(--brass)}
+
+/* state bars */
+.bars{display:grid;grid-template-columns:minmax(6.5rem,9rem) 1fr;gap:.25rem .75rem;font-size:.82rem;align-items:center}
+.bars > *{min-width:0}
+.bars .nm{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.bars .tr{position:relative;height:1rem}
+.bars .b{position:absolute;inset:0 auto 0 0;background:var(--d1);border-radius:0 .2rem .2rem 0;transition:width .6s}
+.bars .b.hh{background:var(--brick)}
+.bars .b.de{background:var(--ink)}
+.bars .v{position:absolute;top:50%;transform:translate(.4rem,-50%);font-family:var(--f-mono);font-size:.72rem;white-space:nowrap;font-variant-numeric:tabular-nums}
+.bars .m{position:absolute;top:-.15rem;bottom:-.15rem;width:2px;background:var(--brass)}
+.strong{font-weight:700}
+
+/* chart */
+.chartbox{overflow-x:auto}
+svg.draw{width:100%;max-width:100%;height:auto;touch-action:none;display:block;background:var(--card);border-radius:.6rem;cursor:crosshair}
+svg text{font-family:var(--f-mono);font-size:11px;fill:var(--muted)}
+
+/* end */
+.recap{display:grid;grid-template-columns:1fr auto auto auto;gap:.4rem 1rem;font-size:.88rem;font-variant-numeric:tabular-nums;align-items:baseline}
+.recap > *{min-width:0}
+.recap .h{font-family:var(--f-mono);font-size:.7rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted)}
+.recap .yg{color:var(--brass)} .recap .rl{color:var(--brick);font-weight:700}
+.total{font-family:var(--f-display);font-weight:800;font-size:clamp(4rem,14vw,6.5rem);line-height:.9;color:var(--brass)}
+.total small{font-size:.4em;color:var(--muted)}
+.actions{display:flex;gap:.75rem;flex-wrap:wrap}
+h3{font-family:var(--f-display);font-weight:800;font-size:1.6rem;text-transform:uppercase;letter-spacing:.03em;margin:0;line-height:1.1}
+h4{font-size:1rem;margin:0}
+
+/* hidden figures */
+.hidden-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:.9rem}
+.hidden-list li{padding-left:1rem;border-left:3px solid var(--line);max-width:65ch}
+.stackbar{display:flex;height:2.6rem;border-radius:.3rem;overflow:hidden}
+.stackbar span{display:flex;align-items:center;justify-content:center;font-family:var(--f-mono);font-size:.8rem;font-weight:500;min-width:0;overflow:hidden;white-space:nowrap}
+.sb-count{background:var(--brick);color:var(--paper)}
+.sb-street{background:var(--d3);color:var(--paper)}
+.sb-unknown{background:repeating-linear-gradient(135deg,var(--line) 0 6px,transparent 6px 12px);color:var(--ink);box-shadow:inset 0 0 0 1.5px var(--d2)}
+.key i.hatch{background:repeating-linear-gradient(135deg,var(--d2) 0 2px,transparent 2px 4px);box-shadow:inset 0 0 0 1px var(--d2)}
+
+/* what you can do */
+.help{display:grid;grid-template-columns:repeat(auto-fit,minmax(13rem,1fr));gap:1rem}
+.help > *{min-width:0}
+.help .panel{gap:.6rem;justify-content:flex-start}
+.help p{font-size:.9rem}
+.help a{font-family:var(--f-mono);font-size:.78rem;color:var(--ink);text-decoration:underline;text-decoration-color:var(--brass);text-decoration-thickness:2px;text-underline-offset:3px;overflow-wrap:anywhere;margin-top:auto}
+.help a:hover{color:var(--brick)}
+.help a:focus-visible{outline:3px solid var(--brass);outline-offset:2px}
+.sharebox{width:100%;box-sizing:border-box;font-family:var(--f-mono);font-size:.85rem;line-height:1.5;color:var(--ink);background:var(--paper);border:1.5px solid var(--line);border-radius:.4rem;padding:.75rem;resize:none}
+.sharebox:focus-visible{outline:3px solid var(--brass);outline-offset:2px}
+.copied{font-family:var(--f-mono);font-size:.8rem;color:var(--muted);min-height:1.2em}
+.src{border-top:1px solid var(--line);padding-top:1rem;font-size:.78rem;color:var(--muted);display:flex;flex-direction:column;gap:.4rem}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <header class="mast">
+    <span class="brand" id="brand">Key Figures</span>
+    <div class="mast-r">
+      <div class="pips" id="pips"></div>
+      <div class="lang" role="group" aria-label="Language / Sprache">
+        <button type="button" id="lang-en" data-l="en" lang="en">EN</button>
+        <button type="button" id="lang-de" data-l="de" lang="de">DE</button>
+      </div>
+    </div>
+  </header>
+  <section id="stage" aria-live="polite"></section>
+  <footer class="src" id="src"></footer>
+</main>
+
+<script>
+const LINK = 'https://sudhara-jayalath.github.io/schluesselzahlen/';
+/* ---------- language ---------- */
+const STR = {
+ en:{
+  brand:'Key Figures', progress:'Progress',
+  src1:'<b>Data:</b> Wohnungslosenstatistik 2026 (Statistisches Bundesamt, reference date 31 Jan 2026), Hamburger Sozialbehörde, Hamburger Lagebild Flüchtlinge. Compiled by Hinz&amp;Kunzt, September 2026, pp. 10–11.',
+  src2:'<b>Who is counted:</b> people without a tenancy or home of their own who are housed in public or refugee accommodation (<i>wohnungslos</i>). People sleeping rough, staying with friends, or refugees whose asylum claim was rejected are not in these figures, so the real numbers are higher.',
+  eye1:'Six guesses', eye2:'Reference date 31.01.2026', h1:'No home of their own',
+  lede:'32,765 people in Hamburg have no flat of their own. Who are they, and why do so many stay in shelters for years? Guess first, then see the real numbers.',
+  start:'Start', qOf:(n,N)=>`Question ${n} of ${N}`, next:'Next question', result:'See my result',
+  lock:'Lock in my guess', lockLine:'Lock in my line', youSaid:g=>`You said ${g}`, pts:n=>`+${n} points`,
+  yourGuess:'Your guess', yourLine:'Your line', counted:'Counted', beds100:'100 beds',
+  hint:'Use mouse or finger. Arrow keys work too: left/right picks a year, up/down sets the value.',
+  drag:'Drag across the chart to draw your line →', drawAria:'Drawing area for the trend from 2022 to 2026',
+  lineVerdict:n=>`in 2026 · your line was off by ${n} people per year on average`,
+  yourResult:'Your result', bands:['Sharp eye','Close in places','Plenty of surprises'],
+  rh:['Question','You','Real','Pts'], in2026:n=>`${n} in 2026`,
+  summary:'In short: one Hamburg resident in 57 has no home of their own, a third of them are children, and more than half have been in a shelter for over two years. Most of them are entitled to a flat. The shelters stay full because there are not enough affordable flats to move into.',
+  again:'Play again', avg:'Germany average', cont:'Continue',
+  hid:{eye:'Before your result', title:'Not in the count',
+    lede:'The 32,765 are only the people the statistic can see: those housed in public or refugee accommodation. Others never show up in it.',
+    items:['<b>About 3,800 people sleep on Hamburg’s streets.</b> That is an estimate from the federal government’s 2024 homelessness report, roughly twice the 1,910 people found in Hamburg’s own 2018 count.',
+      '<b>People staying with friends or family</b> have no flat of their own either, but no one counts them in Hamburg. Across Germany, the same report estimates about 60,400.',
+      '<b>Refugees whose asylum claim was rejected</b> are left out of the statistic too.'],
+    bar:['32,765','','?'],
+    key:['Counted in shelters · 32,765','Sleeping rough (estimate) · ~3,800','Staying with friends and others · unknown'],
+    note:'The figures come from different years and methods, so they don’t simply add up. They do show that the real number is higher.',
+    src:'Sources: Wohnungslosenbericht 2024 of the federal government (early 2024); Hamburg street homelessness survey 2018.'},
+  helpTitle:'What you can do',
+  help:[
+    {t:'Buy Hinz&Kunzt', p:'Buy the magazine from a seller on the street. Hinz&Kunzt is the biggest employment project for homeless people in Hamburg, and selling it brings sellers an income and a daily structure. You can also donate or join the friends’ circle.', u:'https://www.hinzundkunzt.de/helfen/', l:'hinzundkunzt.de/helfen'},
+    {t:'Support the Diakonie', p:'The Diakonie runs day centres, street social work, counselling and housing projects for homeless people in Hamburg. Their site lists the services and ways to get involved.', u:'https://www.diakonie-hamburg.de/de/rat-und-hilfe/wohnungslos/index.html', l:'diakonie-hamburg.de · wohnungslos'},
+    {t:'Flat at risk?', p:'Every Hamburg district has a Fachstelle für Wohnungsnotfälle. If you or someone you know has rent arrears or an eviction notice, they give advice and help keep the flat. The earlier, the better.', u:'https://www.hamburg.de/politik-und-verwaltung/behoerden/sozialbehoerde/themen/soziales/obdachlosigkeit/fachstellen-fuer-wohnungsnotfaelle-31208', l:'hamburg.de · Fachstellen für Wohnungsnotfälle'}],
+  shareTitle:'Share your result', copy:'Copy result',
+  copied:'Copied. Paste it into WhatsApp, Instagram or wherever you like.',
+  copyFail:'Copying didn’t work here. The text is selected, so you can copy it by hand.',
+  shareText:n=>`Schlüsselzahlen / Key Figures: I scored ${n}/600. Did you know that 1 in 57 people in Hamburg have no flat of their own? ${LINK}#en`,
+  q:{
+   rate:{k:'Population', q:'Out of every 100 people living in Hamburg, how many have no home of their own?', unit:'per 100 residents',
+     r:'Roughly one person in 57. No other German state comes close, and the rate is more than three times the national average of 0.54. In a full Volksparkstadion, about 1,000 of the 57,000 people in the stands would have no home of their own.',
+     hh:'Hamburg', cap:'Homeless people per 100 residents, by federal state'},
+   kids:{k:'Children', q:'What share of Hamburg’s 32,765 homeless people are children and teenagers under 18?',
+     r:'10,795 children and teenagers are growing up in Hamburg’s public shelters, with a communal kitchen where a bedroom of their own should be. That is one in three. Across Germany the share is 28%.',
+     a:'Under 18', b:'Adults', cap:'Each square is one in 100 homeless people in Hamburg'},
+   women:{k:'Women', q:'And what share of them are women?',
+     r:'14,865 women, close to half. Stefanie Koch of the Diakonie Hamburg says public shelters often fail to give women protection, privacy and safety, and that homeless services pay too little attention to women’s lives. The Sozialverband is asking for separate housing for women who have experienced violence, priority access to flats for single mothers, and fixed housing quotas for women.',
+     a:'Women · 14,865', b:'Men · 17,900'},
+   trend:{k:'Trend', q:'In 2022, 18,915 people were counted. Draw how you think the number changed up to 2026.',
+     r:'The count jumped after Russia’s full-scale invasion of Ukraine in 2022 and has stayed at about 32,500 ever since. It has not fallen even though arrivals from Ukraine have: 42,211 people seeking protection came to Hamburg in 2022, against 5,659 last year.'},
+   beds:{k:'Waiting', q:'Think of everyone living in Hamburg’s shelters. What share have been there for two years or longer?',
+     r:'More than half: 16,735 people have lived in a shelter for two years or more. Only about one resident in five moved in within the last six months. Accommodation meant as a stopgap has become where people live.',
+     l:['2 years + · 16,735','1–2 years · 5,375','6–12 months · 3,555','Under 6 months · 7,095'], cap:'Each square is one bed in 100'},
+   eligible:{k:'The bottleneck', q:'How many people living in shelters already have a legal right to a flat?', unit:'people',
+     r:'On 31 January 2026 the Sozialbehörde counted 29,427 people in shelters who were entitled to a flat. They are cleared to move out. Hamburg lacks the affordable flats to move them into.',
+     a:'Entitled to a flat · 29,427', b:'Total counted homeless · 32,765',
+     cap:'The two figures come from different counts (Sozialbehörde and the federal statistic), so read the comparison as an order of magnitude.'}
+  }
+ },
+ de:{
+  brand:'Schlüsselzahlen', progress:'Fortschritt',
+  src1:'<b>Daten:</b> Wohnungslosenstatistik 2026 (Statistisches Bundesamt, Stichtag 31.01.2026), Hamburger Sozialbehörde, Hamburger Lagebild Flüchtlinge. Zusammengestellt von Hinz&amp;Kunzt, September 2026, S. 10–11.',
+  src2:'<b>Wer gezählt wird:</b> Menschen ohne eigenen Mietvertrag oder eigenes Wohneigentum, die in öffentlichen Unterkünften oder Flüchtlingsunterkünften leben (<i>wohnungslos</i>). Wer auf der Straße schläft, bei Bekannten unterkommt oder als geflüchtete Person einen abgelehnten Asylantrag hat, ist nicht erfasst. Die tatsächlichen Zahlen liegen also höher.',
+  eye1:'Sechs Schätzfragen', eye2:'Stichtag 31.01.2026', h1:'Keine eigene Wohnung',
+  lede:'32.765 Menschen in Hamburg haben keine eigene Wohnung. Wer sind sie, und warum bleiben so viele jahrelang in Unterkünften? Erst schätzen, dann die echten Zahlen sehen.',
+  start:'Los geht’s', qOf:(n,N)=>`Frage ${n} von ${N}`, next:'Nächste Frage', result:'Zum Ergebnis',
+  lock:'Schätzung festlegen', lockLine:'Linie festlegen', youSaid:g=>`Deine Schätzung: ${g}`, pts:n=>`+${n} Punkte`,
+  yourGuess:'Deine Schätzung', yourLine:'Deine Linie', counted:'Gezählt', beds100:'100 Betten',
+  hint:'Mit Maus oder Finger zeichnen. Pfeiltasten gehen auch: links/rechts wählt das Jahr, hoch/runter ändert den Wert.',
+  drag:'Über das Diagramm ziehen, um deine Linie zu zeichnen →', drawAria:'Zeichenfläche für die Entwicklung von 2022 bis 2026',
+  lineVerdict:n=>`im Jahr 2026 · deine Linie lag im Schnitt um ${n} Menschen pro Jahr daneben`,
+  yourResult:'Dein Ergebnis', bands:['Gut eingeschätzt','Teilweise nah dran','Viele Überraschungen'],
+  rh:['Frage','Du','Echt','Pkt'], in2026:n=>`${n} im Jahr 2026`,
+  summary:'Kurz gesagt: Eine von 57 Personen in Hamburg hat keine eigene Wohnung, ein Drittel davon sind Kinder, und mehr als die Hälfte lebt seit über zwei Jahren in einer Unterkunft. Die meisten hätten Anspruch auf eine Wohnung. Die Unterkünfte bleiben voll, weil es zu wenige bezahlbare Wohnungen gibt.',
+  again:'Nochmal spielen', avg:'Bundesdurchschnitt', cont:'Weiter',
+  hid:{eye:'Vor deinem Ergebnis', title:'Nicht mitgezählt',
+    lede:'Die 32.765 sind nur die Menschen, die die Statistik sieht: alle, die in öffentlichen Unterkünften oder Flüchtlingsunterkünften untergebracht sind. Andere tauchen darin nie auf.',
+    items:['<b>Rund 3.800 Menschen schlafen in Hamburg auf der Straße.</b> So schätzt es der Wohnungslosenbericht 2024 der Bundesregierung. Das sind etwa doppelt so viele wie die 1.910 Menschen, die Hamburg bei der eigenen Zählung 2018 erfasst hat.',
+      '<b>Wer bei Freunden oder Familie unterkommt,</b> hat ebenfalls keine eigene Wohnung, wird in Hamburg aber von niemandem gezählt. Bundesweit schätzt derselbe Bericht rund 60.400 Menschen.',
+      '<b>Geflüchtete mit abgelehntem Asylantrag</b> fehlen ebenfalls in der Statistik.'],
+    bar:['32.765','','?'],
+    key:['In Unterkünften gezählt · 32.765','Auf der Straße (Schätzung) · ca. 3.800','Bei Bekannten und weitere · unbekannt'],
+    note:'Die Zahlen stammen aus verschiedenen Jahren und Erhebungen und lassen sich nicht einfach addieren. Sie zeigen aber: Die tatsächliche Zahl ist höher.',
+    src:'Quellen: Wohnungslosenbericht 2024 der Bundesregierung (Anfang 2024); Hamburger Obdachlosenbefragung 2018.'},
+  helpTitle:'Was du tun kannst',
+  help:[
+    {t:'Hinz&Kunzt kaufen', p:'Kauf das Magazin bei einer Verkäuferin oder einem Verkäufer auf der Straße. Hinz&Kunzt ist das größte Beschäftigungsprojekt für obdachlose Menschen in Hamburg: Der Verkauf bringt Einkommen und eine feste Tagesstruktur. Spenden oder dem Freundeskreis beitreten geht auch.', u:'https://www.hinzundkunzt.de/helfen/', l:'hinzundkunzt.de/helfen'},
+    {t:'Diakonie unterstützen', p:'Die Diakonie betreibt in Hamburg Tagesstätten, Straßensozialarbeit, Beratung und Wohnprojekte für wohnungslose Menschen. Auf ihrer Seite findest du die Angebote und Wege, dich zu engagieren.', u:'https://www.diakonie-hamburg.de/de/rat-und-hilfe/wohnungslos/index.html', l:'diakonie-hamburg.de · wohnungslos'},
+    {t:'Wohnung in Gefahr?', p:'Jeder Hamburger Bezirk hat eine Fachstelle für Wohnungsnotfälle. Bei Mietschulden oder einer Kündigung berät sie dich oder Menschen, die du kennst, und hilft, die Wohnung zu halten. Je früher, desto besser.', u:'https://www.hamburg.de/politik-und-verwaltung/behoerden/sozialbehoerde/themen/soziales/obdachlosigkeit/fachstellen-fuer-wohnungsnotfaelle-31208', l:'hamburg.de · Fachstellen für Wohnungsnotfälle'}],
+  shareTitle:'Ergebnis teilen', copy:'Ergebnis kopieren',
+  copied:'Kopiert. Füg es bei WhatsApp, Instagram oder wo du magst ein.',
+  copyFail:'Kopieren hat hier nicht geklappt. Der Text ist markiert, du kannst ihn von Hand kopieren.',
+  shareText:n=>`Schlüsselzahlen: Ich habe ${n} von 600 Punkten. Wusstest du, dass in Hamburg eine von 57 Personen keine eigene Wohnung hat? ${LINK}#de`,
+  q:{
+   rate:{k:'Bevölkerung', q:'Wie viele von 100 Menschen in Hamburg haben keine eigene Wohnung?', unit:'pro 100 Einwohner:innen',
+     r:'Etwa eine von 57 Personen. Kein anderes Bundesland kommt auch nur in die Nähe, und die Quote ist mehr als dreimal so hoch wie der Bundesdurchschnitt von 0,54. Im vollen Volksparkstadion hätten rund 1.000 der 57.000 Menschen auf den Rängen keine eigene Wohnung.',
+     hh:'Hamburg', cap:'Wohnungslose pro 100 Einwohner:innen, nach Bundesland'},
+   kids:{k:'Kinder', q:'Welcher Anteil der 32.765 Wohnungslosen in Hamburg ist jünger als 18 Jahre?',
+     r:'10.795 Kinder und Jugendliche wachsen in Hamburgs öffentlichen Unterkünften auf, mit einer Gemeinschaftsküche, wo ein eigenes Kinderzimmer sein sollte. Das ist jede:r Dritte. Bundesweit liegt der Anteil bei 28 %.',
+     a:'Unter 18', b:'Erwachsene', cap:'Jedes Feld steht für eine:n von 100 Wohnungslosen in Hamburg'},
+   women:{k:'Frauen', q:'Und wie hoch ist der Anteil der Frauen?',
+     r:'14.865 Frauen, also fast die Hälfte. Laut Stefanie Koch von der Diakonie Hamburg fehlt es Frauen in öffentlichen Unterkünften oft an Schutz, Privatsphäre und Sicherheit, und ihre Lebenslage kommt in der Wohnungslosenhilfe zu kurz. Der Sozialverband verlangt eigene Wohneinheiten für gewaltbetroffene Frauen, Vorrang für alleinerziehende Mütter bei der Wohnungsvergabe und feste Wohnkontingente für Frauen.',
+     a:'Frauen · 14.865', b:'Männer · 17.900'},
+   trend:{k:'Entwicklung', q:'2022 wurden 18.915 Menschen gezählt. Zeichne, wie sich die Zahl deiner Meinung nach bis 2026 entwickelt hat.',
+     r:'Nach dem russischen Großangriff auf die Ukraine 2022 stieg die Zahl sprunghaft und liegt seitdem bei rund 32.500. Sie ist nicht gesunken, obwohl inzwischen viel weniger Schutzsuchende aus der Ukraine nach Hamburg kommen: 2022 waren es 42.211, im vergangenen Jahr 5.659.'},
+   beds:{k:'Warten', q:'Denk an alle, die in Hamburgs Unterkünften leben. Welcher Anteil wohnt dort schon zwei Jahre oder länger?',
+     r:'Mehr als die Hälfte: 16.735 Menschen leben seit zwei Jahren oder länger in einer Unterkunft. Nur etwa jede:r Fünfte ist in den letzten sechs Monaten eingezogen. Was als Übergang gedacht war, ist zur Dauerlösung geworden.',
+     l:['2 Jahre und länger · 16.735','1–2 Jahre · 5.375','6–12 Monate · 3.555','Unter 6 Monaten · 7.095'], cap:'Jedes Feld steht für ein Bett von 100'},
+   eligible:{k:'Der Engpass', q:'Wie viele Menschen in den Unterkünften hätten bereits Anspruch auf eine Wohnung?', unit:'Menschen',
+     r:'Zum Stichtag 31.01.2026 zählte die Sozialbehörde 29.427 Menschen in Unterkünften, die Anspruch auf eine Wohnung hatten. Sie könnten ausziehen. Es fehlen die bezahlbaren Wohnungen dafür.',
+     a:'Wohnberechtigt · 29.427', b:'Wohnungslose insgesamt · 32.765',
+     cap:'Die beiden Zahlen stammen aus unterschiedlichen Erhebungen (Sozialbehörde und Bundesstatistik). Der Vergleich zeigt die Größenordnung.'}
+  }
+ }
+};
+
+function pickLang(){
+  const h = (location.hash||'').slice(1).toLowerCase();
+  if(h==='de'||h==='en') return h;
+  try{ const s = localStorage.getItem('hwak-lang'); if(s==='de'||s==='en') return s; }catch(e){}
+  return (navigator.language||'').toLowerCase().startsWith('de') ? 'de' : 'en';
+}
+let LANG = pickLang();
+const t = () => STR[LANG];
+const loc = () => LANG==='de' ? 'de-DE' : 'en-US';
+const num = (v,d=0) => (+v).toLocaleString(loc(),{minimumFractionDigits:d,maximumFractionDigits:d});
+const pctStr = (v,d=0) => num(v,d) + (LANG==='de' ? ' %' : '%');
+
+/* ---------- data ---------- */
+const STATES = [["Hamburg",1.75,"hh"],["Berlin",1.56],["Schleswig-Holstein",0.98],["Baden-Württemberg",0.81],["Bremen",0.73],["Nordrhein-Westfalen",0.58],["@avg",0.54,"de"],["Hessen",0.42],["Niedersachsen",0.42],["Rheinland-Pfalz",0.37],["Bayern",0.31],["Saarland",0.29],["Brandenburg",0.18],["Sachsen",0.14],["Thüringen",0.13],["Sachsen-Anhalt",0.05],["Mecklenburg-Vorpommern",0.04]];
+const YEARS = [2022,2023,2024,2025,2026];
+const TRUE_LINE = [18915,32285,32615,32410,32765];
+const YMAX = 50000;
+
+function waffle(groups, guess){
+  const cells = [];
+  groups.forEach(g => { for(let j=0;j<g.n;j++) cells.push(g.color); });
+  while(cells.length<100) cells.push('var(--line)');
+  const gN = Math.round(guess);
+  return `<div class="waffle" role="img" aria-label="${t().beds100}">${cells.map((c,i)=>`<span style="background:${c}" class="${i<gN?'g':''}"></span>`).join('')}</div>`;
+}
+const ring = () => `<span><i class="ring"></i>${t().yourGuess}</span>`;
+
+const Q = [
+ { id:'rate', min:0,max:6,step:0.05,start:0.5, fmt:v=>num(v,2), answer:1.75, tol:1.75,
+   reveal(g,s){
+     const max = Math.max(1.75,g)*1.08;
+     const rows = STATES.map(([n,v,c])=>`<span class="nm ${c?'strong':''}">${n==='@avg'?t().avg:n}</span><div class="tr"><div class="b ${c||''}" style="width:${v/max*100}%"></div><span class="v" style="left:${v/max*100}%">${num(v,2)}</span><div class="m" style="left:${g/max*100}%"></div></div>`).join('');
+     return `<p>${s.r}</p>
+     <div class="panel"><div class="key"><span><i style="background:var(--brick)"></i>${s.hh}</span><span><i style="background:var(--ink)"></i>${t().avg}</span><span><i style="background:var(--brass)"></i>${t().yourGuess}</span></div><div class="bars">${rows}</div><p class="small">${s.cap}</p></div>`;
+   }},
+ { id:'kids', min:0,max:100,step:1,start:10, pct:true, answer:33, tol:40,
+   reveal(g,s){
+     return `<p>${s.r}</p>
+     <div class="panel">${waffle([{n:33,color:'var(--brick)'},{n:67,color:'var(--d1)'}],g)}
+     <div class="key"><span><i style="background:var(--brick)"></i>${s.a}</span><span><i style="background:var(--d1)"></i>${s.b}</span>${ring()}</div><p class="small">${s.cap}</p></div>`;
+   }},
+ { id:'women', min:0,max:100,step:1,start:20, pct:true, answer:45.4, ansDec:1, tol:40,
+   reveal(g,s){
+     return `<p>${s.r}</p>
+     <div class="panel">${waffle([{n:45,color:'var(--brick)'},{n:55,color:'var(--d1)'}],g)}
+     <div class="key"><span><i style="background:var(--brick)"></i>${s.a}</span><span><i style="background:var(--d1)"></i>${s.b}</span>${ring()}</div></div>`;
+   }},
+ { id:'trend', type:'line', tol:15000, reveal(g,s){ return `<p>${s.r}</p>`; } },
+ { id:'beds', min:0,max:100,step:1,start:15, pct:true, answer:51.1, ansDec:1, tol:40,
+   reveal(g,s){
+     const c = ['var(--brick)','var(--d3)','var(--d2)','var(--d1)'];
+     return `<p>${s.r}</p>
+     <div class="panel">${waffle([{n:51,color:c[0]},{n:16,color:c[1]},{n:11,color:c[2]},{n:22,color:c[3]}],g)}
+     <div class="key">${s.l.map((x,i)=>`<span><i style="background:${c[i]}"></i>${x}</span>`).join('')}${ring()}</div><p class="small">${s.cap}</p></div>`;
+   }},
+ { id:'eligible', min:0,max:32765,step:5,start:5000, fmt:v=>num(v), answer:29427, tol:20000,
+   reveal(g,s){
+     const w = 29427/32765*100, gw = Math.min(100,g/32765*100);
+     return `<p>${s.r}</p>
+     <div class="panel"><div class="bars" style="grid-template-columns:1fr"><div class="tr" style="height:2.2rem"><div class="b" style="width:100%;background:var(--d1)"></div><div class="b hh" style="width:${w}%"></div><div class="m" style="left:${gw}%;width:3px"></div></div></div>
+     <div class="key"><span><i style="background:var(--brick)"></i>${s.a}</span><span><i style="background:var(--d1)"></i>${s.b}</span><span><i style="background:var(--brass)"></i>${t().yourGuess}</span></div>
+     <p class="small">${s.cap}</p></div>`;
+   }},
+];
+// display helpers per question
+const showVal = (q,v) => q.pct ? pctStr(v) : q.fmt(v);
+const showAns = q => q.pct ? pctStr(q.answer, q.ansDec||0) : q.fmt(q.answer);
+const unitOf = q => q.pct ? '' : (t().q[q.id].unit||'');
+
+/* ---------- state ---------- */
+const fresh = () => ({i:-1, guesses:{}, scores:{}, done:{}, line:[18915,null,null,null,null]});
+let S = fresh();
+const stage = document.getElementById('stage');
+
+function chrome(){
+  document.documentElement.lang = LANG;
+  document.getElementById('brand').textContent = t().brand;
+  document.getElementById('pips').setAttribute('aria-label', t().progress);
+  document.getElementById('src').innerHTML = `<p>${t().src1}</p><p>${t().src2}</p>`;
+  ['en','de'].forEach(l=>document.getElementById('lang-'+l).setAttribute('aria-pressed', String(l===LANG)));
+}
+function pips(){
+  document.getElementById('pips').innerHTML = Q.map((q,k)=>`<span class="pip ${S.done[q.id]?'done':(k===S.i?'now':'')}" title="${t().q[q.id].k}"></span>`).join('');
+}
+function score(q,g){ return Math.round(100*Math.max(0,1-Math.abs(g-q.answer)/q.tol)); }
+
+function render(keepScroll){
+  chrome(); pips();
+  if(S.i<0) intro();
+  else if(S.i===Q.length) hiddenFigures();
+  else if(S.i>Q.length) end();
+  else { const q = Q[S.i]; q.type==='line' ? lineQ(q) : sliderQ(q); }
+  if(!keepScroll) window.scrollTo({top:0});
+}
+
+function intro(){
+  const T = t();
+  stage.innerHTML = `<div class="intro">
+    <div class="stack">
+      <p class="eyebrow"><span>${T.eye1}</span><span>${T.eye2}</span></p>
+      <h1>${T.h1}</h1>
+      <p class="lede">${T.lede}</p>
+      <button class="btn" id="go">${T.start}</button>
+    </div>
+    <div class="tag" aria-hidden="true"><b>${num(32765)}</b><span>wohnungslos · Hamburg · 2026</span></div>
+  </div>`;
+  document.getElementById('go').onclick = ()=>{S.i=0;render();};
+}
+
+function header(q){
+  const s = t().q[q.id];
+  return `<p class="eyebrow"><span>${t().qOf(S.i+1,Q.length)}</span><span>${s.k}</span></p><h2>${s.q}</h2>`;
+}
+function nextBtn(){ return `<button class="btn" id="next">${S.i===Q.length-1?t().cont:t().next}</button>`; }
+function bindNext(){ document.getElementById('next').onclick=()=>{S.i++;render();}; }
+
+function sliderQ(q){
+  const done = S.done[q.id];
+  const g = S.guesses[q.id] ?? q.start;
+  stage.innerHTML = `<article class="stack">${header(q)}
+    <div class="dial"><output id="val">${showVal(q,g)}</output><span class="unit">${unitOf(q)}</span></div>
+    <input type="range" id="g-${q.id}" min="${q.min}" max="${q.max}" step="${q.step}" value="${g}" ${done?'disabled':''} aria-label="${t().yourGuess}">
+    <div class="scale"><span>${showVal(q,q.min)}</span><span>${showVal(q,q.max)}</span></div>
+    ${done?'':`<button class="btn" id="lock">${t().lock}</button>`}
+    <div id="rev"></div></article>`;
+  const inp = document.getElementById('g-'+q.id), out = document.getElementById('val');
+  inp.oninput = ()=>{ S.guesses[q.id]=+inp.value; out.textContent=showVal(q,+inp.value); };
+  const show = ()=>{
+    const gv = S.guesses[q.id] ?? q.start;
+    document.getElementById('rev').innerHTML = `<div class="reveal stack">
+      <div class="verdict"><span class="truth">${showAns(q)}</span><span>${t().youSaid(showVal(q,gv))}</span><span class="pts">${t().pts(S.scores[q.id])}</span></div>
+      ${q.reveal(gv, t().q[q.id])}${nextBtn()}</div>`;
+    bindNext();
+  };
+  if(done) show();
+  else document.getElementById('lock').onclick = ()=>{
+    S.guesses[q.id] = +inp.value; S.scores[q.id]=score(q,+inp.value); S.done[q.id]=true;
+    inp.disabled=true; document.getElementById('lock').remove(); pips(); show();
+  };
+}
+
+/* ---------- line drawing question ---------- */
+const W=600,H=290,L=58,R=20,T=18,B=34;
+const xAt = i => L + i*(W-L-R)/4;
+const yAt = v => T + (1-v/YMAX)*(H-T-B);
+function lineSvg(user, truth){
+  let s = '';
+  for(let v=0; v<=YMAX; v+=10000){
+    s += `<line x1="${L}" x2="${W-R}" y1="${yAt(v)}" y2="${yAt(v)}" stroke="var(--line)" stroke-width="1"/>`;
+    s += `<text x="${L-8}" y="${yAt(v)+4}" text-anchor="end">${num(v)}</text>`;
+  }
+  YEARS.forEach((y,i)=>{ s += `<text x="${xAt(i)}" y="${H-10}" text-anchor="middle">${y}</text>`; });
+  if(!truth && user.slice(1).every(v=>v===null)){
+    s += `<text x="${(xAt(1)+xAt(4))/2}" y="${yAt(42000)}" text-anchor="middle" style="fill:var(--brass);font-size:13px">${t().drag}</text>`;
+  }
+  const pts = []; for(let i=0;i<5;i++){ if(user[i]===null) break; pts.push([xAt(i),yAt(user[i])]); }
+  if(pts.length>1) s += `<polyline points="${pts.map(p=>p.join(',')).join(' ')}" fill="none" stroke="var(--brass)" stroke-width="3" stroke-dasharray="${truth?'6 5':'0'}" stroke-linejoin="round"/>`;
+  pts.forEach(p=> s += `<circle cx="${p[0]}" cy="${p[1]}" r="5" fill="var(--brass)"/>`);
+  if(truth){
+    const tp = TRUE_LINE.map((v,i)=>[xAt(i),yAt(v)]);
+    s += `<polygon points="${xAt(0)},${yAt(0)} ${tp.map(p=>p.join(',')).join(' ')} ${xAt(4)},${yAt(0)}" fill="var(--brick)" opacity=".12"/>`;
+    s += `<polyline points="${tp.map(p=>p.join(',')).join(' ')}" fill="none" stroke="var(--brick)" stroke-width="3.5" stroke-linejoin="round"/>`;
+    tp.forEach((p,i)=>{ s += `<circle cx="${p[0]}" cy="${p[1]}" r="5" fill="var(--brick)"/><text x="${p[0]}" y="${p[1]+(i===0?20:-12)}" text-anchor="middle" style="fill:var(--ink);font-weight:500">${num(TRUE_LINE[i])}</text>`; });
+  }
+  return s;
+}
+const lineErr = () => Math.round(S.line.slice(1).reduce((a,v,i)=>a+Math.abs(v-TRUE_LINE[i+1]),0)/4);
+
+function lineQ(q){
+  const done = S.done[q.id];
+  stage.innerHTML = `<article class="stack">${header(q)}
+    <div class="chartbox"><svg class="draw" id="draw" viewBox="0 0 ${W} ${H}" tabindex="0" role="img" aria-label="${t().drawAria}"></svg></div>
+    <p class="small" id="hint">${done?'':t().hint}</p>
+    ${done?'':`<button class="btn" id="lock" disabled>${t().lockLine}</button>`}
+    <div id="rev"></div></article>`;
+  const svg = document.getElementById('draw');
+  const paint = ()=>{ svg.innerHTML = lineSvg(S.line, !!S.done[q.id]); const lk=document.getElementById('lock'); if(lk) lk.disabled = S.line.some(v=>v===null); };
+  paint();
+  const show = ()=>{
+    document.getElementById('rev').innerHTML = `<div class="reveal stack"><div class="verdict"><span class="truth">${num(32765)}</span><span>${t().lineVerdict(num(lineErr()))}</span><span class="pts">${t().pts(S.scores[q.id])}</span></div>
+      <div class="key"><span><i style="background:var(--brick)"></i>${t().counted}</span><span><i style="background:var(--brass)"></i>${t().yourLine}</span></div>${q.reveal(null, t().q[q.id])}${nextBtn()}</div>`;
+    bindNext();
+  };
+  if(done){ svg.style.cursor='default'; show(); return; }
+  let down=false, sel=1;
+  const setAt = (idx,val)=>{
+    val = Math.max(0,Math.min(YMAX,val));
+    S.line[idx]=val;
+    let prev = idx-1; while(prev>0 && S.line[prev]===null) prev--;
+    for(let k=prev+1;k<idx;k++) S.line[k] = S.line[prev] + (val-S.line[prev])*(k-prev)/(idx-prev);
+    paint();
+  };
+  const fromEvent = e=>{
+    const r = svg.getBoundingClientRect();
+    const sx = (e.clientX-r.left)/r.width*W, sy=(e.clientY-r.top)/r.height*H;
+    const idx = Math.max(1,Math.min(4,Math.round((sx-L)/((W-L-R)/4))));
+    setAt(idx, Math.round((1-(sy-T)/(H-T-B))*YMAX/50)*50);
+  };
+  svg.onpointerdown = e=>{down=true; svg.setPointerCapture(e.pointerId); fromEvent(e);};
+  svg.onpointermove = e=>{ if(down) fromEvent(e); };
+  svg.onpointerup = svg.onpointercancel = ()=>{down=false;};
+  svg.onkeydown = e=>{
+    if(e.key==='ArrowLeft'){sel=Math.max(1,sel-1);e.preventDefault();}
+    else if(e.key==='ArrowRight'){sel=Math.min(4,sel+1);e.preventDefault();}
+    else if(e.key==='ArrowUp'||e.key==='ArrowDown'){
+      const cur = S.line[sel] ?? S.line[sel-1] ?? 18915;
+      setAt(sel, cur + (e.key==='ArrowUp'?1000:-1000)); e.preventDefault();
+    }
+  };
+  document.getElementById('lock').onclick = ()=>{
+    S.scores[q.id] = Math.round(100*Math.max(0,1-lineErr()/q.tol)); S.done[q.id]=true;
+    document.getElementById('lock').remove(); document.getElementById('hint').textContent='';
+    svg.onpointerdown=svg.onpointermove=svg.onkeydown=null; svg.style.cursor='default';
+    pips(); paint(); show();
+  };
+}
+
+/* ---------- hidden figures ---------- */
+function hiddenFigures(){
+  const H = t().hid;
+  const tot = 32765 + 3787, known = 86;           // known figures take 86% of the bar, the unknown part the rest
+  const w1 = 32765/tot*known, w2 = 3787/tot*known;
+  stage.innerHTML = `<article class="stack">
+    <p class="eyebrow"><span>${H.eye}</span></p>
+    <h2>${H.title}</h2>
+    <p class="lede">${H.lede}</p>
+    <div class="panel">
+      <div class="stackbar" role="img" aria-label="${H.key.join('; ')}">
+        <span class="sb-count" style="width:${w1}%">${H.bar[0]}</span>
+        <span class="sb-street" style="width:${w2}%">${H.bar[1]}</span>
+        <span class="sb-unknown" style="width:${100-known}%">${H.bar[2]}</span>
+      </div>
+      <div class="key"><span><i style="background:var(--brick)"></i>${H.key[0]}</span><span><i style="background:var(--d3)"></i>${H.key[1]}</span><span><i class="hatch"></i>${H.key[2]}</span></div>
+      <p class="small">${H.note}</p>
+    </div>
+    <ul class="hidden-list">${H.items.map(x=>`<li>${x}</li>`).join('')}</ul>
+    <p class="small">${H.src}</p>
+    <button class="btn" id="next">${t().result}</button>
+  </article>`;
+  bindNext();
+}
+
+/* ---------- end ---------- */
+function copyShare(){
+  const ta = document.getElementById('share-text'), msg = document.getElementById('copied');
+  const fallback = ()=>{ ta.focus(); ta.select(); msg.textContent = t().copyFail; };
+  try{
+    navigator.clipboard.writeText(ta.value).then(()=>{ msg.textContent = t().copied; }, fallback);
+  }catch(e){ fallback(); }
+}
+
+function end(){
+  const T = t();
+  const total = Q.reduce((a,q)=>a+(S.scores[q.id]||0),0);
+  const label = T.bands[total>=480?0:total>=300?1:2];
+  const rows = Q.map(q=>{
+    let yg, rl;
+    if(q.type==='line'){ yg = T.in2026(num(S.line[4]||0)); rl = num(32765); }
+    else { yg = showVal(q, S.guesses[q.id]??q.start); rl = showAns(q); }
+    return `<span>${T.q[q.id].k}</span><span class="yg">${yg}</span><span class="rl">${rl}</span><span>${S.scores[q.id]||0}</span>`;
+  }).join('');
+  stage.innerHTML = `<article class="stack">
+    <p class="eyebrow"><span>${T.yourResult}</span></p>
+    <div class="total">${total}<small> / 600</small></div>
+    <h2>${label}</h2>
+    <div class="panel"><div class="recap">${T.rh.map(h=>`<span class="h">${h}</span>`).join('')}${rows}</div></div>
+    <p>${T.summary}</p>
+    <section class="stack" aria-labelledby="help-h">
+      <h3 id="help-h">${T.helpTitle}</h3>
+      <div class="help">${T.help.map(h=>`<div class="panel"><h4>${h.t}</h4><p>${h.p}</p><a href="${h.u}" target="_blank" rel="noopener">${h.l} ↗</a></div>`).join('')}</div>
+    </section>
+    <section class="stack" aria-labelledby="share-h">
+      <h3 id="share-h">${T.shareTitle}</h3>
+      <textarea class="sharebox" id="share-text" rows="4" readonly aria-labelledby="share-h">${T.shareText(total)}</textarea>
+      <div class="actions"><button class="btn" id="copy">${T.copy}</button><button class="btn ghost" id="again">${T.again}</button></div>
+      <p class="copied" id="copied" aria-live="polite"></p>
+    </section>
+  </article>`;
+  document.getElementById('copy').onclick = copyShare;
+  document.getElementById('again').onclick=()=>{S=fresh(); S.i=0; render();};
+}
+
+/* ---------- language switch ---------- */
+document.querySelectorAll('.lang button').forEach(b=>b.onclick=()=>{
+  LANG = b.dataset.l;
+  try{ localStorage.setItem('hwak-lang', LANG); }catch(e){}
+  render(true);
+});
+
+function start(data){ if(data && data.S) S = data.S; if(data && data.LANG) LANG = data.LANG; render(); }
+window.claude?.hot?.snapshot?.(()=>({S, LANG}));
+window.claude?.hot?.ready ? window.claude.hot.ready(start) : start(window.claude?.hot?.data ?? {});
+</script>
+</body>
+</html>
